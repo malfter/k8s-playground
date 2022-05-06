@@ -1,0 +1,16 @@
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: IngressGateway
+metadata:
+  name: ingress-gateway
+spec:
+  listeners:
+    - port: 9999
+      protocol: http
+      services:
+        - name: static-server
+          hosts:
+            - "*"
+        - name: dashboard
+          hosts:
+            - "dashboard.example.consul"
