@@ -7,13 +7,16 @@
   - [Setup minikube with consul](#setup-minikube-with-consul)
     - [Access the Consul UI](#access-the-consul-ui)
     - [Access Consul with kubectl and the HTTP API](#access-consul-with-kubectl-and-the-http-api)
-  - [Intentions](#intentions)
+  - [Consul Intentions](#consul-intentions)
     - [Create an intention that denies communication](#create-an-intention-that-denies-communication)
     - [Allow the application dashboard to communicate with the Counting service](#allow-the-application-dashboard-to-communicate-with-the-counting-service)
-    - [What it does](#what-it-does)
-      - [01_minikube_start.sh](#01_minikube_startsh)
-      - [02_consul.sh](#02_consulsh)
-      - [03_services.sh](#03_servicessh)
+  - [Consul Ingress-Gateway](#consul-ingress-gateway)
+    - [⚠️ IMPORTANT Cannot access Services via NodePort on MacOS M1 with driver docker](#️-important-cannot-access-services-via-nodeport-on-macos-m1-with-driver-docker)
+  - [What it does](#what-it-does)
+    - [01_minikube_start.sh](#01_minikube_startsh)
+    - [02_consul.sh](#02_consulsh)
+    - [03_services.sh](#03_servicessh)
+    - [04_ingress-gateway.sh](#04_ingress-gatewaysh)
 
 ## Setup minikube with consul
 
@@ -40,7 +43,7 @@ In addition to accessing Consul with the UI, you can manage Consul with the HTTP
 
     kubectl exec --stdin --tty consul-server-0 --namespace consul -- /bin/sh
 
-## Intentions
+## Consul Intentions
 
 ### Create an intention that denies communication
 
@@ -50,18 +53,42 @@ In addition to accessing Consul with the UI, you can manage Consul with the HTTP
 
     kubectl delete -f deny.yaml
 
-### What it does
+## Consul Ingress-Gateway
+
+    # Call "default" service (currently: static-server)
+    curl $(minikube service -n consul --url consul-ingress-gateway)
+
+    # Call "dashboard" service
+    curl -H "Host: dashboard.example.consul" $(minikube service -n consul --url consul-ingress-gateway)
+
+### ⚠️ IMPORTANT Cannot access Services via NodePort on MacOS M1 with driver docker
+
+The access via the NodePort(s) unfortunately does not work under MacOS M1, here you have to resort to port forwarding:
+
+    kubectl --namespace consul port-forward service/consul-ingress-gateway 30099:9999
+
+    # Call "default" service (currently: static-server)
+    curl http://127.0.0.1:30099
+
+    # Call "dashboard" service
+    curl -H "Host: dashboard.example.consul" http://127.0.0.1:30099
+
+## What it does
 
 See the scripts for more details.
 
-#### 01_minikube_start.sh
+### 01_minikube_start.sh
 
 Starts simple minikube instance.
 
-#### 02_consul.sh
+### 02_consul.sh
 
-TODO
+Installs Consul Service-Mesh into minikube instance.
 
-#### 03_services.sh
+### 03_services.sh
 
-TODO
+Installs some demo services.
+
+### 04_ingress-gateway.sh
+
+Installs and configures an Consul ingress-gateway example.
