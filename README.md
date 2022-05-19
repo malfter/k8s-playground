@@ -10,6 +10,7 @@ This project can be used to try out various frameworks around Kubernetes.
   - [Table of Contents](#table-of-contents)
   - [Topics](#topics)
     - [Authentication and Authorization](#authentication-and-authorization)
+    - [Kustomize](#kustomize)
     - [Service Mesh](#service-mesh)
 
 ## Topics
@@ -17,6 +18,10 @@ This project can be used to try out various frameworks around Kubernetes.
 ### Authentication and Authorization
 
 To test multiple kubernetes authentication and authorization variants, the section `auth` was created, see [auth/README](auth/README.md).
+
+### Kustomize
+
+Some examples with kustomize, see [kustomize/README](kustomize/README.md).
 
 ### Service Mesh
 

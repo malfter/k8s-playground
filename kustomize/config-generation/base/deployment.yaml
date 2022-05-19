@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: my-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: my-deployment
+    spec:
+      containers:
+        - name: my-container
+          image: my-image:1.0
+          env:
+          - name: MY_VAR
+            valueFrom:
+              configMapKeyRef:
+                name: my-cm
+                key: my.properties
