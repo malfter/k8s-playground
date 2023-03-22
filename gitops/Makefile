@@ -12,7 +12,7 @@ init:  ## 🌱 Init k8s cluster
 	k3d cluster list --no-headers | grep mycluster >> /dev/null || k3d cluster create mycluster
 	helm repo add argo-cd https://argoproj.github.io/argo-helm
 	helm dep update charts/argo-cd/
-	helm install argo-cd charts/argo-cd/
+	helm list --no-headers | grep argo-cd > /dev/null && helm upgrade argo-cd charts/argo-cd/ || helm install argo-cd charts/argo-cd/
 
 clean:  ## 🧹 Clean up resources
 	k3d cluster delete mycluster
