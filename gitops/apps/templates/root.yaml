@@ -12,7 +12,7 @@ spec:
   source:
     path: gitops/apps/
     repoURL: https://github.com/malfter/k8s-playground.git
-    targetRevision: gitops # HEAD
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
