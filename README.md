@@ -12,6 +12,7 @@ This project can be used to try out various frameworks around Kubernetes.
     - [Authentication and Authorization](#authentication-and-authorization)
     - [GitOps](#gitops)
     - [Kustomize](#kustomize)
+    - [Secrets](#secrets)
     - [Service Mesh](#service-mesh)
 
 ## Topics
@@ -27,6 +28,12 @@ Testing of GitOps tools [gitops/README](gitops/README.md)
 ### Kustomize
 
 Some examples with kustomize, see [kustomize/README](kustomize/README.md).
+
+### Secrets
+
+Handle secrets in kubernetes:
+
+- [secrets/akv2k8s/README](secrets/akv2k8s/README.md)
 
 ### Service Mesh
 
