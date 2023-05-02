@@ -38,3 +38,4 @@ Handle secrets in kubernetes:
 ### Service Mesh
 
 - [service-mesh/hashicorp-consul/README](service-mesh/hashicorp-consul/README.md)
+- [service-mesh/openservicemesh/README](service-mesh/openservicemesh/README.md)
