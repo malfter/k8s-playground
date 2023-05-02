@@ -1,8 +1,8 @@
-# k8s-playground - Topic Service Mesh
+# k8s-playground - Topic Service Mesh - Hashicorp Consul
 
 ## Table of contents
 
-- [k8s-playground - Topic Service Mesh](#k8s-playground---topic-service-mesh)
+- [k8s-playground - Topic Service Mesh - Hashicorp Consul](#k8s-playground---topic-service-mesh---hashicorp-consul)
   - [Table of contents](#table-of-contents)
   - [Setup minikube with consul](#setup-minikube-with-consul)
     - [Access the Consul UI](#access-the-consul-ui)
@@ -13,10 +13,10 @@
   - [Consul Ingress-Gateway](#consul-ingress-gateway)
     - [⚠️ IMPORTANT Cannot access Services via NodePort on MacOS M1 with driver docker](#️-important-cannot-access-services-via-nodeport-on-macos-m1-with-driver-docker)
   - [What it does](#what-it-does)
-    - [01_minikube_start.sh](#01_minikube_startsh)
-    - [02_consul.sh](#02_consulsh)
-    - [03_services.sh](#03_servicessh)
-    - [04_ingress-gateway.sh](#04_ingress-gatewaysh)
+    - [01\_minikube\_start.sh](#01_minikube_startsh)
+    - [02\_consul.sh](#02_consulsh)
+    - [03\_services.sh](#03_servicessh)
+    - [04\_ingress-gateway.sh](#04_ingress-gatewaysh)
 
 ## Setup minikube with consul
 
