@@ -31,8 +31,7 @@ init-azure: check-env  ## 🌱 Init azure resources
 
 init-k8s: check-env  ## 🌱 Init k8s cluster
   # Create cluster
-	k3d cluster list --no-headers | grep mycluster >> /dev/null || k3d cluster create mycluster --wait
-	echo "Wait 45s until k8s cluster is ready ..." && sleep 45
+	k3d cluster list --no-headers | grep mycluster >> /dev/null || (k3d cluster create mycluster --wait && ../../scripts/wait.sh 45)
 	# Install akv2k8s
 	helm repo add spv-charts https://charts.spvapi.no
 	helm repo update

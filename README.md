@@ -13,6 +13,7 @@ This project can be used to try out various frameworks around Kubernetes.
     - [GitOps](#gitops)
     - [Kustomize](#kustomize)
     - [Secrets](#secrets)
+    - [Security](#security)
     - [Service Mesh](#service-mesh)
 
 ## Topics
@@ -34,6 +35,10 @@ Some examples with kustomize, see [kustomize/README](kustomize/README.md).
 Handle secrets in kubernetes:
 
 - [secrets/akv2k8s/README](secrets/akv2k8s/README.md)
+
+### Security
+
+- [secrets/neuvector/README](security/neuvector/README.md)
 
 ### Service Mesh
 
